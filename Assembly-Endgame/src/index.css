@@ -1,0 +1,128 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    margin: 0;
+    font-family: "Hanken Grotesk", Arial, sans-serif;
+    background-color: #282726;
+    padding: 1.75rem;
+    height: 100vh;
+}
+header{
+    max-width: 22rem;
+    width: 100%;
+    text-align: center;
+}
+header > h1{
+    color: #F9F4DA;
+    font-size: 1.25rem;
+    font-weight: 500;
+    line-height: 100%;
+}
+header > p{
+    color: #8E8E8E;
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 100%;
+}
+.game-status{
+    max-width: 22rem;
+    width: 100%;
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 100%;
+    color: #F9F4DA;
+    background-color: #BA2A2A;
+    border-radius: 6px;
+    padding: 0.5rem;
+    text-align: center;
+}
+.game-status > span{
+    display: block;
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+}
+.container{
+    width: 100%;
+    max-width: 19rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.1875rem;
+    justify-content: center;
+    margin-top: 1.25rem;
+    margin-bottom: 2.25rem;
+}
+.container > span{
+    padding: 0.3rem 0.3rem;
+    border-radius: 4px;
+    font-size: 0.875rem;
+    font-weight: 700;
+    line-height: 100%;
+    text-align: center;
+    white-space: nowrap;
+}
+.letters{
+    display: flex;
+    gap: 0.2rem;
+    max-width: 22rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.letters > span{
+    background-color: #323232;
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-align: center;
+    line-height: 100%;
+    color: #F9F4DA;
+    border-bottom: 1px solid #F9F4DA;
+    padding: 0.4rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    display: block;
+}
+.keyboard{
+    display: flex;
+    gap: 0.4rem;
+    max-width: 30rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
+}
+.keyboard > button{
+    background-color: #FCBA29;
+    font-weight: 600;
+    font-size: 1rem;
+    text-align: center;
+    line-height: 100%;
+    color: #1E1E1E;
+    padding: 0.4rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    display: block;
+    border: 1px solid #D7D7D7;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    font-family: "Hanken Grotesk", Arial, sans-serif;
+}
+.user-button{
+    cursor: pointer;
+    color: #1E1E1E;
+    font-weight: 600;
+    font-size: 1rem;
+    text-align: center;
+    line-height: 100%;
+    font-family: "Hanken Grotesk", Arial, sans-serif;
+    background-color: #11B5E5;
+    border-radius: 0.25rem;
+    border: 1px solid #D7D7D7;
+    padding: 0.4rem 0.75rem;
+    width: 14.25rem;
+    height: 2.5rem;
+}
+main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
