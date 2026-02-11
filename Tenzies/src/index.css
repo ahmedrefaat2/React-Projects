@@ -1,7 +1,5 @@
 * {
     box-sizing: border-box;
-    margin: 0;
-    padding: 0;
 }
 body {
     margin: 0;
@@ -19,7 +17,6 @@ body {
     background-color: #F5F5F5;
     width: 90%;
     max-width: 400px;
-    padding: 20px;
     border-radius: 12px;
     display: flex;
     flex-direction: column;
@@ -28,9 +25,10 @@ body {
 }
 .container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
-    gap: 10px;
     width: 100%;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 10px;
     margin: 20px 0;
 }
 .container button {
@@ -63,7 +61,7 @@ body {
 .title {
     font-size: 2.5rem;
     font-weight: 700;
-    letter-spacing: -1px;
+    letter-spacing: -3%;
     text-align: center;
 }
 
@@ -74,7 +72,7 @@ body {
     text-align: center;
     width: 90%;
     margin: 10px 0;
-    line-height: 1.2;
+    line-height: 100%;
 }
 .sr-only {
     position: absolute;
