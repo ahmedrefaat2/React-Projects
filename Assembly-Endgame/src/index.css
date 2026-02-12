@@ -8,6 +8,11 @@ body{
     padding: 1.75rem;
     height: 100vh;
 }
+main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 header{
     max-width: 22rem;
     width: 100%;
@@ -25,7 +30,29 @@ header > p{
     font-weight: 500;
     line-height: 100%;
 }
-.game-status{
+.status-container{
+    max-width: 22rem;
+    width: 100%;
+    height: 5.5rem;
+}
+.game-win{
+    max-width: 22rem;
+    width: 100%;
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 100%;
+    color: #F9F4DA;
+    background-color: #10A95B;
+    border-radius: 6px;
+    padding: 0.5rem;
+    text-align: center;
+}
+.game-win > span{
+    display: block;
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+}
+.game-lost{
     max-width: 22rem;
     width: 100%;
     font-size: 1rem;
@@ -37,7 +64,7 @@ header > p{
     padding: 0.5rem;
     text-align: center;
 }
-.game-status > span{
+.game-lost > span{
     display: block;
     font-size: 1.25rem;
     margin-bottom: 0.5rem;
@@ -52,7 +79,7 @@ header > p{
     margin-top: 1.25rem;
     margin-bottom: 2.25rem;
 }
-.container > span{
+.chip{
     padding: 0.3rem 0.3rem;
     border-radius: 4px;
     font-size: 0.875rem;
@@ -60,6 +87,20 @@ header > p{
     line-height: 100%;
     text-align: center;
     white-space: nowrap;
+    position: relative;
+}
+.chip.lost::before {
+    content: "💀";
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    font-size: 0.85rem;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.7);
 }
 .letters{
     display: flex;
@@ -91,11 +132,11 @@ header > p{
     margin-bottom: 1.5rem;
 }
 .keyboard > button{
-    background-color: #FCBA29;
     font-weight: 600;
     font-size: 1rem;
     text-align: center;
     line-height: 100%;
+    background-color: #FCBA29;
     color: #1E1E1E;
     padding: 0.4rem;
     width: 2.5rem;
@@ -105,6 +146,12 @@ header > p{
     border-radius: 0.25rem;
     cursor: pointer;
     font-family: "Hanken Grotesk", Arial, sans-serif;
+}
+.keyboard > .correct{
+    background-color: #10A95B;
+}
+.keyboard > .wrong{
+    background-color: #EC5D49;
 }
 .user-button{
     cursor: pointer;
@@ -120,9 +167,11 @@ header > p{
     padding: 0.4rem 0.75rem;
     width: 14.25rem;
     height: 2.5rem;
+    margin-bottom: 0.5rem;
 }
-main{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.user-button:active {
+    transform: translateY(1px);
+}
+.keyboard > button:active {
+    transform: translateY(1px);
 }
