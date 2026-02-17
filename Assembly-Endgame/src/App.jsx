@@ -66,10 +66,10 @@ export default function AssemblyEndgame(){
                 isGameOver={isGameOver}
                 wrongGuessCount={wrongGuessCount}
             />
-            <div className="container">
+            <div className="w-full max-w-304 flex flex-wrap gap-3 justify-center mt-20 mb-36">
                 {languagesList}
             </div>
-            <div className="letters">
+            <div className="flex gap-[0.2rem] max-w-352 flex-wrap justify-center letters">
                 {letterElements}
             </div>
             <section 
@@ -88,10 +88,17 @@ export default function AssemblyEndgame(){
                 guessedLetters.includes(letter) ? letter + "." : "blank.")
                 .join(" ")}</p>
             </section>
-            <div className="keyboard">
+            <div className="flex flex-wrap justify-center gap-[0.4rem] max-w-480 mt-48 mb-24 keyboard">
                 {keyboardElements}
             </div>
-            {isGameOver?<button onClick={gameReset} className="user-button">New Game</button>:null}
+            {isGameOver?
+                <button onClick={gameReset} 
+                    className="cursor-pointer text-[#1E1E1E] text-16 font font-semibold
+                                text-center leading-none font-hanken bg-[#11B5E5]
+                                rounded-sm border border-solid border-[#D7D7D7]
+                                px-[0.4rem] py-12 w-228 h-40 mb-[0.6rem] active:translate-y-[1px]">
+                        New Game
+                </button>:null}
         </main>
     )
 }

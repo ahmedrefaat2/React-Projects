@@ -1,40 +1,33 @@
-*{
-    box-sizing: border-box;
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Karla:ital,wght@0,200..800;1,200..800&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@theme{
+    --spacing: 1px;
+    --color-bg-app: #282726;
+    --font-hanken: "Hanken Grotesk", Arial, sans-serif; 
 }
-body{
-    margin: 0;
-    font-family: "Hanken Grotesk", Arial, sans-serif;
-    background-color: #282726;
-    padding: 1.75rem;
-    height: 100vh;
+@layer base{
+    *{
+        box-sizing: border-box;
+    }
+    body{
+        margin: 0;
+        height: 100vh;
+        padding: calc(var(--spacing) * 28);
+        background-color: var(--color-bg-app);
+        font-family: var(--font-hanken);
+    }
+    main{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    header{
+        width: 100%;
+        max-width: 22rem;
+        text-align: center;
+    }
 }
-main{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-header{
-    max-width: 22rem;
-    width: 100%;
-    text-align: center;
-}
-header > h1{
-    color: #F9F4DA;
-    font-size: 1.25rem;
-    font-weight: 500;
-    line-height: 100%;
-}
-header > p{
-    color: #8E8E8E;
-    font-size: 0.875rem;
-    font-weight: 500;
-    line-height: 100%;
-}
-.status-container{
-    max-width: 22rem;
-    width: 100%;
-    height: 5.5rem;
-}
+@layer components{
 .default{
     max-width: 22rem;
     width: 100%;
@@ -58,36 +51,10 @@ header > p{
     font-size: 1.25rem;
     margin-bottom: 0.5rem;
 }
-.farewell{
-    max-width: 22rem;
-    width: 100%;
-    font-size: 1rem;
-    font-weight: 500;
-    line-height: 100%;
-    color: #F9F4DA;
-    padding: 0.5rem;
-    background-color: #7A5EA7;
-    border-radius: 4px;
-    height: 3.6rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 1px dashed #323232;
-}
-.container{
-    width: 100%;
-    max-width: 19rem;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.1875rem;
-    justify-content: center;
-    margin-top: 1.25rem;
-    margin-bottom: 2.25rem;
-}
 .chip{
     padding: 0.3rem 0.3rem;
     border-radius: 4px;
-    font-size: 0.875rem;
+    font-size: 0.86rem;
     font-weight: 700;
     line-height: 100%;
     text-align: center;
@@ -107,13 +74,6 @@ header > p{
     left: 0;
     background-color: rgba(0, 0, 0, 0.7);
 }
-.letters{
-    display: flex;
-    gap: 0.2rem;
-    max-width: 22rem;
-    flex-wrap: wrap;
-    justify-content: center;
-}
 .letters > span{
     background-color: #323232;
     font-weight: 700;
@@ -129,15 +89,6 @@ header > p{
 }
 .letters > span.lost{
     color: #EC5D49;
-}
-.keyboard{
-    display: flex;
-    gap: 0.4rem;
-    max-width: 30rem;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-top: 3rem;
-    margin-bottom: 1.5rem;
 }
 .keyboard > button{
     font-weight: 600;
@@ -161,25 +112,6 @@ header > p{
 .keyboard > .wrong{
     background-color: #EC5D49;
 }
-.user-button{
-    cursor: pointer;
-    color: #1E1E1E;
-    font-weight: 600;
-    font-size: 1rem;
-    text-align: center;
-    line-height: 100%;
-    font-family: "Hanken Grotesk", Arial, sans-serif;
-    background-color: #11B5E5;
-    border-radius: 0.25rem;
-    border: 1px solid #D7D7D7;
-    padding: 0.4rem 0.75rem;
-    width: 14.25rem;
-    height: 2.5rem;
-    margin-bottom: 0.6rem;
-}
-.user-button:active {
-    transform: translateY(1px);
-}
 .keyboard > button:active {
     transform: translateY(1px);
 }
@@ -188,14 +120,4 @@ header > p{
     pointer-events: auto;     
     opacity: 0.6;
 }
-.sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
 }

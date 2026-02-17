@@ -18,13 +18,16 @@ export default function GameStatus(props){
             You lose! Better start learning Assembly 😭:
         </p>
     )):(props.lastGuessed?(
-        <p className="farewell">
+        <p className="
+            max-w-352 w-full text-16 font-medium leading-none text-[#F9F4DA] p-8
+            bg-[#7A5EA7] rounded-sm h-[3.6rem] flex justify-center items-center
+            border border-[#323232] border-dashed">
             {getFarewellText(languages[props.wrongGuessCount - 1].name)}
         </p>
     ):(null))
     
     return (
-        <div aria-live="polite" role="status" className="status-container">
+        <div aria-live="polite" role="status" className="max-w-352 w-full h-82 flex items-center">
             {conditionalRendering}
         </div>
     )
