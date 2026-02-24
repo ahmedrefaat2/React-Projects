@@ -1,4 +1,4 @@
-import { Button } from "@/Components/ui/button"
+import { Button } from "@/components/ui/button"
 import {
   AlertDialog,
   AlertDialogAction,
@@ -8,7 +8,7 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-} from "@/Components/ui/alert-dialog"
+} from "@/components/ui/alert-dialog"
 import React from "react"
 import { ToDoList } from "../Contexts/ToDoListContext"
 function DisplayAlertDialog() {
