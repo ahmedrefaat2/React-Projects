@@ -1,5 +1,5 @@
 import { Trash, Pencil, Check } from "lucide-react";
-import { Button } from "@/Components/ui/button"
+import { Button } from "@/components/ui/button"
 function Tasks({newTask, onComplete, onDelete, onEdit}) {
   return (
     <div className="hover:scale-105 transform transition-transform duration-300 w-full rounded-lg bg-[#2B3A8C] p-4 text-white flex items-center place-content-between h-18">
