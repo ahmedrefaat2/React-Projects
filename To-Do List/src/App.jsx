@@ -1,8 +1,8 @@
 import React from "react"
 import { ToDoList } from "./Contexts/ToDoListContext"
-import MyToDo from "./components/MyToDo";
-import  DisplayAlertDialog  from "./components/DisplayAlertDialog";
-import  DisplayDialog  from "./components/DisplayDialog";
+import MyToDo from "./Components/MyToDo";
+import  DisplayAlertDialog  from "./Components/DisplayAlertDialog";
+import  DisplayDialog  from "./Components/DisplayDialog";
 export default function App(){
     const {
     showConfirm,
