@@ -1,7 +1,7 @@
-import { Button } from "@/components/ui/button"
-import {Card,CardFooter,CardHeader,CardTitle} from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { Button } from "@/Components/ui/button"
+import {Card,CardFooter,CardHeader,CardTitle} from "@/Components/ui/card"
+import { Input } from "@/Components/ui/input"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/Components/ui/tabs"
 import React from "react"
 import { ToDoList } from "../Contexts/ToDoListContext"
 function MyToDo() {
