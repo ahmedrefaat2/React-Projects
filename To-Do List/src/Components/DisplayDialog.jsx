@@ -1,12 +1,12 @@
-import { Button } from "@/components/ui/button"
+import { Button } from "@/Components/ui/button"
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
   DialogFooter,
-} from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input"
+} from "@/Components/ui/dialog";
+import { Input } from "@/Components/ui/input"
 import React from "react"
 import { ToDoList } from "../Contexts/ToDoListContext"
 function DisplayDialog() {
