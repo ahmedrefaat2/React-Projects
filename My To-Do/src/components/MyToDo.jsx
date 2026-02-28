@@ -6,7 +6,6 @@ import React from "react"
 import { ToDoList } from "../Contexts/ToDoListContext"
 function MyToDo() {
   const {
-      error,
       currentTab,
       setCurrentTab,
       handleToDoList,
@@ -22,28 +21,24 @@ function MyToDo() {
                     <TabsTrigger value="completed">Completed</TabsTrigger>
                     <TabsTrigger value="not-completed">Not completed</TabsTrigger>
                 </TabsList>
-                <TabsContent value="all">{renderTasks("all")}</TabsContent>
-                <TabsContent value="completed">{renderTasks("completed")}</TabsContent>
-                <TabsContent value="not-completed">{renderTasks("not-completed")}</TabsContent>
+                <TabsContent value="all">{renderTasks}</TabsContent>
+                <TabsContent value="completed">{renderTasks}</TabsContent>
+                <TabsContent value="not-completed">{renderTasks}</TabsContent>
             </Tabs>
         </CardHeader>
         <form action={handleToDoList}>
         <CardFooter className="flex-row-reverse gap-2">
         <Input  type="text" name="todo-list" placeholder="New Task"
-                className={error ? "border-destructive" : ""}
+                required
                 autoComplete="off"
         >
         </Input>
-        {error && (
-            <p className="text-sm text-destructive mt-1">
-                {error}
-            </p>
-        )}
         <Button variant="destructive" className="w-20">
             Add
         </Button>
         </CardFooter>
         </form>
+        
     </Card>
   )
 }

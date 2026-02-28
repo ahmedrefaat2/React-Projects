@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button"
 import {
   AlertDialog,
   AlertDialogAction,
@@ -35,8 +34,7 @@ function DisplayAlertDialog() {
 
       <AlertDialogAction
         className="bg-red-700 text-destructive-foreground cursor-pointer hover:bg-red-600 hover:translate-y-0.5 active:translate-y-0.75 font-roboto"
-        onClick={confirmDeleteTask}
-      >
+        onClick={confirmDeleteTask}>
         Delete
       </AlertDialogAction>
     </AlertDialogFooter>

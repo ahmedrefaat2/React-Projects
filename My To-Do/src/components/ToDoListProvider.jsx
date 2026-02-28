@@ -1,13 +1,13 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useMemo, useCallback } from "react"
 import { nanoid } from "nanoid"
 import {ToDoList} from "../Contexts/ToDoListContext"
 import Tasks from "./Tasks"
+import { toast } from "sonner"
 export function ToDoListProvider({ children }) {
   const [tasks, setTasks] = useState(() => {
   const stored = localStorage.getItem("tasks");
   return stored ? JSON.parse(stored) : [];
 });
-  const [error, setError] = useState("")
   const [currentTab, setCurrentTab] = useState("all")
   const [showConfirm, setShowConfirm] = useState(false)
   const [taskToDelete, setTaskToDelete] = useState(null)
@@ -19,13 +19,6 @@ export function ToDoListProvider({ children }) {
   const handleToDoList = (formData) => {
     const newTask = formData.get("todo-list")
 
-    if (!newTask.trim()) {
-      setError("Enter Your New Task Please!")
-      return
-    }
-
-    setError("")
-
     const taskObject = {
       id: nanoid(10),
       title: newTask,
@@ -34,33 +27,69 @@ export function ToDoListProvider({ children }) {
     }
 
     setTasks(prev => [...prev, taskObject])
+    toast.success("New Task added successfully ✅",
+    { position: "top-center",
+      duration: 3000,
+      style: {
+        backgroundColor: "#16a34a",
+        color: "#ffffff",
+        padding: "0.5rem 1rem",
+        borderRadius: "0.5rem",
+        boxShadow: "0 4px 6px rgba(0,0,0,0.1)",
+        fontWeight: "500",
+        maxWidth: "16rem"
+  }
+    })
+    setCurrentTab("all")
   }
 
-  const markCompleted = (id) => {
+  const markCompleted = useCallback((id)=>{
     setTasks(prev =>
       prev.map(obj =>
         obj.id === id ? { ...obj, completed: true } : obj
       )
     )
     setCurrentTab("completed")
-  }
+  },[setTasks, setCurrentTab])
 
-  const filteredTasks = (tab) => {
-    if (tab === "all") return tasks
-    if (tab === "completed") return tasks.filter(obj => obj.completed)
-    if (tab === "not-completed") return tasks.filter(obj => !obj.completed)
-    return []
-  }
+  const filteredTasks = useMemo(() => {
+  if (currentTab === "all") return tasks
+  if (currentTab === "completed") return tasks.filter(obj => obj.completed)
+  if (currentTab === "not-completed") return tasks.filter(obj => !obj.completed)
+  return []
+}, [tasks, currentTab])
 
-  const requestDeleteTask = (id) => {
+  const requestDeleteTask = useCallback((id) => {
     setTaskToDelete(id)
     setShowConfirm(true)
-  }
+  },[setTaskToDelete, setShowConfirm])
 
   const confirmDeleteTask = () => {
+    if (!taskToDelete) return
+    const deletedTask = tasks.find(t => t.id === taskToDelete)
+    if (!deletedTask) return
     setTasks(prev => prev.filter(task => task.id !== taskToDelete))
     setShowConfirm(false)
     setTaskToDelete(null)
+    toast("Task removed 🗑️", {
+      position: "top-center",
+      duration: 3000,
+      action: {
+        label: "Undo",
+        onClick: () => {
+          setTasks(prev => [deletedTask, ...prev])
+        }
+      },
+      style: {
+        backgroundColor: "#dc2626",
+        color: "#ffffff",
+        padding: "0.5rem 1rem",
+        borderRadius: "0.5rem",
+        boxShadow: "0 4px 6px rgba(0,0,0,0.1)",
+        fontWeight: "500",
+        maxWidth:"16rem",
+      }
+    })
   }
 
   const cancelDeleteTask = () => {
@@ -68,10 +97,10 @@ export function ToDoListProvider({ children }) {
     setTaskToDelete(null)
   }
 
-  const openEditModal = (task) => {
+  const openEditModal = useCallback((task) => {
     setTaskToEdit(task)
     setShowEdit(true)
-  }
+  },[setTaskToEdit, setShowEdit])
 
   const handleEditTask = (formData) => {
     const updatedTitle = formData.get("title")
@@ -84,23 +113,53 @@ export function ToDoListProvider({ children }) {
           : task
       )
     )
-
+    toast.success("Changes saved ✏️",
+      {position: "top-center",
+      duration: 3000,
+      style: {
+        backgroundColor: "#f59e0b",
+        color: "#ffffff",
+        padding: "0.5rem 1rem",
+        borderRadius: "0.5rem",
+        boxShadow: "0 4px 6px rgba(0,0,0,0.1)",
+        fontWeight: "500",
+        maxWidth: "16rem"
+      }
+    })
     setShowEdit(false)
     setTaskToEdit(null)
   }
-  const renderTasks = (tab) => filteredTasks(tab).map(task=>(
-      <Tasks 
-        key={task.id}
-        newTask={task}
-        onComplete={()=>markCompleted(task.id)}
-        onDelete={()=> requestDeleteTask(task.id)}
-        onEdit={() => openEditModal(task)} 
-      />
-    ))
+  
+  const renderTasks = useMemo(() => {
+  return filteredTasks.map(task => (
+    <Tasks
+      key={task.id}
+      newTask={task}
+      onComplete={() => {
+        const wasCompleted = task.completed
+        markCompleted(task.id)
+        if (!wasCompleted) {
+          toast.success("Nice! Task completed ✅", {
+          position: "top-center",
+          duration: 3000,
+          style: {
+            backgroundColor: "#2563eb",
+            color: "#ffffff",
+            padding: "0.5rem 1rem",
+            borderRadius: "0.5rem",
+            boxShadow: "0 4px 6px rgba(0,0,0,0.1)",
+            fontWeight: "500",
+            maxWidth: "16rem"
+          }
+      })}}}
+      onDelete={() => requestDeleteTask(task.id)}
+      onEdit={() => openEditModal(task)}
+    />
+  ))
+}, [filteredTasks, markCompleted, requestDeleteTask, openEditModal])
 
   const value = {
     tasks,
-    error,
     currentTab,
     showConfirm,
     taskToDelete,
