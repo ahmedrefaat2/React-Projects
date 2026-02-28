@@ -36,8 +36,7 @@ export function ToDoListProvider({ children }) {
         padding: "0.5rem 1rem",
         borderRadius: "0.5rem",
         boxShadow: "0 4px 6px rgba(0,0,0,0.1)",
-        fontWeight: "500",
-        maxWidth: "16rem"
+        fontWeight: "500"
   }
     })
     setCurrentTab("all")
@@ -86,8 +85,7 @@ export function ToDoListProvider({ children }) {
         padding: "0.5rem 1rem",
         borderRadius: "0.5rem",
         boxShadow: "0 4px 6px rgba(0,0,0,0.1)",
-        fontWeight: "500",
-        maxWidth:"16rem",
+        fontWeight: "500"
       }
     })
   }
@@ -122,8 +120,7 @@ export function ToDoListProvider({ children }) {
         padding: "0.5rem 1rem",
         borderRadius: "0.5rem",
         boxShadow: "0 4px 6px rgba(0,0,0,0.1)",
-        fontWeight: "500",
-        maxWidth: "16rem"
+        fontWeight: "500"
       }
     })
     setShowEdit(false)
@@ -148,8 +145,7 @@ export function ToDoListProvider({ children }) {
             padding: "0.5rem 1rem",
             borderRadius: "0.5rem",
             boxShadow: "0 4px 6px rgba(0,0,0,0.1)",
-            fontWeight: "500",
-            maxWidth: "16rem"
+            fontWeight: "500"
           }
       })}}}
       onDelete={() => requestDeleteTask(task.id)}

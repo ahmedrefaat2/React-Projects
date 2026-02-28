@@ -28,6 +28,7 @@ function DisplayDialog() {
         <label className="text-sm text-gray-600">Title</label>
         <Input
           name="title"
+          autoComplete="off"
           defaultValue={taskToEdit?.title}
         />
       </div>
@@ -36,6 +37,7 @@ function DisplayDialog() {
         <label className="text-sm text-gray-600">Description</label>
         <Input
           name="description"
+          autoComplete="off"
           defaultValue={taskToEdit?.description}
         />
       </div>
